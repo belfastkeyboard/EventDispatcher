@@ -21,7 +21,7 @@ void table_erase(Table *table, Event key);
 void table_clear(Table *table);
 EventHandler table_get(Table *table, Event event);
 
-//bool table_empty(Table *table);
+bool table_empty(Table *table);
 size_t table_size(Table *table);
 size_t table_capacity(Table *table);
 

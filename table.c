@@ -17,6 +17,25 @@ typedef struct Table
     size_t nmemb;
 } Table;
 
+Table *create_table(void)
+{
+    Table *table = malloc(sizeof(Table));
+
+    table->array = NULL;
+    table->capacity = 0;
+    table->nmemb = 0;
+
+    return table;
+}
+void destroy_table(Table **table)
+{
+    if ((*table)->array)
+        free((*table)->array);
+
+    free(*table);
+    *table = NULL;
+}
+
 hash_t table_djb2(Event *event)
 {
     unsigned char string[sizeof(*event)];
@@ -181,10 +200,10 @@ EventHandler table_get(Table *table, Event event)
     return handler;
 }
 
-/*bool table_empty(Table *table)
+bool table_empty(Table *table)
 {
     return (table->nmemb == 0);
-}*/
+}
 size_t table_size(Table *table)
 {
     return table->nmemb;
@@ -192,23 +211,4 @@ size_t table_size(Table *table)
 size_t table_capacity(Table *table)
 {
     return table->capacity;
-}
-
-Table *create_table(void)
-{
-    Table *table = malloc(sizeof(Table));
-
-    table->array = NULL;
-    table->capacity = 0;
-    table->nmemb = 0;
-
-    return table;
-}
-void destroy_table(Table **table)
-{
-    if ((*table)->array)
-        free((*table)->array);
-
-    free(*table);
-    *table = NULL;
 }
