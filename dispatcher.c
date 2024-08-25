@@ -1,5 +1,4 @@
 #include <assert.h>
-#include <malloc.h>
 #include "event.h"
 #include "table.h"
 #include "dispatcher.h"
@@ -33,6 +32,10 @@ void destroy_event_dispatcher(void)
 void register_listener(Event event, EventHandler handler)
 {
     table_insert(event_dispatcher->table, event, handler);
+}
+void deregister_listener(Event event)
+{
+    table_erase(event_dispatcher->table, event);
 }
 void submit_event(Event event)
 {
