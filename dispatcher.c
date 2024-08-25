@@ -37,6 +37,7 @@ void deregister_listener(Event event)
 {
     table_erase(event_dispatcher->table, event);
 }
+
 void submit_event(Event event)
 {
     assert(event_dispatcher);
