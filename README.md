@@ -1,10 +1,6 @@
-# Arena
-Basic arena implementation
+# Event Dispatcher
 
-- Static arena, size is fixed, requesting memory beyond limit returns NULL
-- Dynamic arena, shrinks and grows as memory is allocated/freed, doubles/halves size
+Basic event dispatcher implementation.
+Uses hash table to manage event handlers/listeners.
 
-Abstract API, cannot access arena's internal state, must rely on functions.
-
-TODO:
-- add support for global arena
+TODO: have CMake import the ring buffer dependency
