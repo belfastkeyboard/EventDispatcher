@@ -45,8 +45,8 @@ size_t table_probe(Table *table, Event key, size_t index, bool skip_tombstones)
 {
     assert(table && table->array);
 
-    unsigned int found = -1;
-    unsigned int count = 1;
+    size_t found = -1;
+    size_t count = 1;
     size_t tombstone = -1;
 
     while (found == -1)
